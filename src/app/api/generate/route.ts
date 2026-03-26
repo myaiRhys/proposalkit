@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     const prompt = buildPrompt(brief, settings)
 
     const stream = client.messages.stream({
-      model: 'claude-sonnet-4-5-20251001',
+      model: 'claude-3-5-sonnet-20241022',
       max_tokens: 4000,
       messages: [{ role: 'user', content: prompt }],
     })
