@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ProposalKit
 
-## Getting Started
+AI-powered proposal generator. Fill in a project brief, hit Generate, and get a complete professional proposal written by Claude in under 30 seconds.
 
-First, run the development server:
+## Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Add your Anthropic API key to .env.local
+ANTHROPIC_API_KEY=your_api_key_here
+```
+
+Get an API key at [console.anthropic.com](https://console.anthropic.com).
+
+## Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy to Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Push to GitHub
+2. Import to Vercel
+3. Add `ANTHROPIC_API_KEY` as an environment variable in the Vercel dashboard
+4. Deploy
 
-## Learn More
+## Configure Your Brand
 
-To learn more about Next.js, take a look at the following resources:
+Click **Settings** in the nav to configure your company name, contact details, and tagline. These appear in all generated proposals and PDF exports.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **AI-powered generation** — Claude writes professional, tailored proposals
+- **Streaming output** — Watch the proposal appear word by word
+- **PDF export** — Download client-ready PDF documents
+- **History** — Save and reload previous proposals
+- **White-label** — Your brand, your proposals
 
-## Deploy on Vercel
+## Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS
+- Anthropic Claude API
+- jspdf (PDF generation)
+- react-hook-form + zod (forms)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+Built by [Kinnear Systems](https://kinnearsystems.co.za)
