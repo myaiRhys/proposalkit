@@ -2,22 +2,22 @@ import Anthropic from '@anthropic-ai/sdk'
 import { buildPrompt } from '@/lib/prompts'
 import { ProposalBrief, BrandSettings } from '@/types'
 
-const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-})
-
 export async function POST(req: Request) {
   try {
-    const { brief, settings } = (await req.json()) as {
-      brief: ProposalBrief
-      settings: BrandSettings
-    }
-
     if (!process.env.ANTHROPIC_API_KEY) {
       return new Response(
         JSON.stringify({ error: 'ANTHROPIC_API_KEY not configured' }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       )
+    }
+
+    const client = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY,
+    })
+
+    const { brief, settings } = (await req.json()) as {
+      brief: ProposalBrief
+      settings: BrandSettings
     }
 
     const prompt = buildPrompt(brief, settings)
@@ -56,8 +56,9 @@ export async function POST(req: Request) {
     })
   } catch (error) {
     console.error('Generate error:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
     return new Response(
-      JSON.stringify({ error: 'Failed to generate proposal' }),
+      JSON.stringify({ error: `Failed to generate proposal: ${errorMessage}` }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     )
   }
